@@ -1,0 +1,116 @@
+<title>修改资料</title>
+{include file="public/bootstrap" /}
+{include file="public/header" /}
+
+<body>
+
+<div class="clear blank"></div>
+<article>
+
+    <div class="row">
+        <div class="col-md-2">
+            {include file="public/left_nav" /}
+        </div>
+        <div class="col-md-10 whitebg">
+            <div class="page-header">
+                <h1>修改资料 <small></small>
+
+                </h1>
+            </div>
+            <div class="u_content">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">昵称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="nickname" value="{$user.nickname}" required  lay-verify="required" placeholder="请输入昵称" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">姓名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="realname" value="{$user.realname}"  placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">邮箱</label>
+                    <div class="layui-input-block">
+                        <input style="width: 50%" type="text" name="email"value="{$user.email}" required  lay-verify="required|email" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">手机</label>
+                    <div class="layui-input-block">
+                        <input style="width: 50%" type="number" name="phone"value="{$user.phone}" required  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="gender" value="1" title="男"{if condition="$user.gender eq 1"} checked{/if}>
+                        <input type="radio" name="gender" value="0" title="女"{if condition="$user.gender eq 0"} checked{/if}>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="address" value="{$user.address}" required  placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">简介</label>
+                    <div class="layui-input-block">
+                        <textarea name="intro" placeholder="请输入内容" class="layui-textarea">{$user.intro}</textarea>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+            <script>
+                //Demo
+                layui.use('form', function(){
+                    var form = layui.form;
+
+                    var url ="{:url('index/user/change_profile')}";
+                    //监听提交
+                    form.on('submit(formDemo)', function(data){
+                        layer.load();
+                        $.post(url,data.field,function (e) {
+                            layer.closeAll();
+                            if(e.code == 200){
+                                success(e.msg);
+                            }else {
+                                error(e.msg);
+                            }
+                        })
+                        return false;
+                    });
+                });
+            </script>
+
+            <div class="clear blank"></div>
+
+        </div>
+    </div>
+
+
+</article>
+
+<div class="clear blank"></div>
+{include file="public/footer" /}
+
+
+<a href="#" title="返回顶部" class="icon-top"></a>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<aside class="side-section right-box">
+
+    <div class="whitebg tuijian">
+        <h2 class="side-title">站长推荐</h2>
+        <section class="topnews imgscale">
+            <a href="javascript:;">
+                <img src="http://micuer.com/data/upload/advert/newspic01.jpg"><span>【告别2018】耕耘才有所得，付出才有收获</span></a>
+        </section>
+        <ul>
+
+            <?php $cate = 0; $list = content_list($cate,12,"rel_hits DESC","tag = '推荐'");?>
+            {volist name="list" id="v"}
+            <li>
+                <a href="{:url('index/content/read',['id'=>$v.contentid])}" target="_blank" title="{$v.title}">
+                    <i><img src="{$v.prefimg}"></i>
+                    <p>{$v.title}</p>
+                </a>
+            </li>
+            {/volist}
+
+
+        </ul>
+    </div>
+    <div class="blank clear" ></div>
+    <div class="whitebg paihang">
+        <h2 class="side-title">点击排行</h2>
+        <section class="topnews imgscale">
+            <a href="javascript:;"><img src="//micuer.com/data/upload/advert/newspic01.jpg"><span>【告别2018】努力才有所得</span></a>
+        </section>
+        <ul>
+            <?php $cate = 0; $list = content_list($cate,6,"hits DESC");?>
+            {volist name="list" id="v"}
+            <li>
+                <i></i>
+                <a href="{:url('index/content/read',['id'=>$v.contentid])}" target="_blank" title="{$v.title}">{$v.title}</a>
+            </li>
+            {/volist}
+
+
+        </ul>
+    </div>
+    <div class="blank clear" ></div>
+    <div class="whitebg cloud">
+        <h2 class="side-title">标签云</h2>
+        <ul>
+            {volist name="tags" id="v"}
+            <a href="#" target="_blank">{$v.name}({$v.hits})</a>
+            {/volist}
+
+        </ul>
+    </div>
+    <div class="blank clear" ></div>
+    <!--<div class="ad ad-small">-->
+        <!--<a href='https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=l1qstn8f' target=_blank>-->
+            <!--<img src='__STATIC__/blue/picture/c58f3150b86b1cad751bff3e094b09fc.jpg' border=0 width='320' height='140' alt=''>-->
+        <!--</a>-->
+    <!--</div>-->
+
+    <div class="whitebg suiji">
+        <h2 class="side-title">猜你喜欢</h2>
+        <ul>
+            <?php $cate = 0; $list = content_list($cate,12,"rel_hits DESC");?>
+            {volist name="list" id="v"}
+            <li>
+                <i></i>
+                <a href="{:url('index/content/read',['id'=>$v.contentid])}" target="_blank" title="{$v.title}">{$v.title}</a>
+            </li>
+            {/volist}
+
+
+        </ul>
+    </div>
+</aside>

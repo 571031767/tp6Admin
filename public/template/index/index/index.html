@@ -1,0 +1,541 @@
+{include file="public/header" /}
+
+<body>
+
+<div class="clear blank"></div>
+<article>
+    <!-- banner begin-->
+    <div class="banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {volist name="banner" id="v"}
+                <div class="swiper-slide"><a href="{$v.url}"><img src="//micuer.com/data/upload/advert/{$v.img}"><span>{$v.tag}</span></a></div>
+                {/volist}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+    <!-- banner end-->
+
+
+
+    <!-- headline-boc begin-->
+    <div class="headline-box whitebg">
+        <div class="headline-news">
+            <h2 class="headline-news-title"><span>{$headline.tag}</span><a href="/blog/design/40.html" target="_blank" title="{$headline.title}">{$headline.title}</a></h2>
+            <p class="headline-news-smalltext">{$headline.info|strip_tags}</p>
+
+            <ul class="headline-news-list">
+                <?php $cate = 0; $list = content_list($cate,6);?>
+                {volist name="list" id="v"}
+                <li><a href="{:url('index/content/read',['id'=>$v.contentid])}" target="_blank" title="{$v.title}">{$v.title}</a></li>
+                {/volist}
+
+            </ul>
+        </div>
+    </div>
+    <!-- headline-box end-->
+    <div class="clear blank"></div>
+    <div class="tuijian-news box whitebg tab-num01">
+        <div class="gd-box">
+            <ul id="tab">
+                <li class="tab-current">快手教程</li>
+                <li>音频素材</li>
+                <li>直播相关教程</li>
+
+
+            </ul>
+        </div>
+        <div id="tab-content">
+            <section class="tab-box">
+
+                <div class="tuijian-news-pic">
+                    <?php $c = content(21);?>
+                    <i>
+                        <a href="{:url('content/read',['id'=>$c.contentid])}">
+                        <img src="{$c.prefimg}" alt="{$c.title}">
+                            <span>{$c.tag}</span>
+                        </a>
+                    </i>
+                    <h2>
+                        <a href="{:url('content/read',['id'=>$c.contentid])}">{$c.title}</a>
+                    </h2>
+                    <p>{$c.info|strip_tags}</p>
+                    <a href="{:url('content/read',['id'=>$c.contentid])}" class="btn-blue-border">阅读详情</a>
+                </div>
+
+                <div class="tuijian-news-list">
+                    <ul>
+                        <?php $list = content_list(21,6);?>
+                        {volist name="list" id="v"}
+                        <li>
+                            <a target="_blank" href="{:url('content/read',['id'=>$v.contentid])}">
+                                <span>
+                                    <b>{$v.hits}</b>
+                                    {$v.add_time|date='Y-m'}
+                                </span>
+                            <h3>{$v.title}</h3>
+                            <p>{$v.info|strip_tags}</p>
+                            </a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                <span class="tab-a-more">
+                    <a href="{:url('content/list',['cate_id'=>21])}" title="更多博客日记">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </a>
+                </span>
+            </section>
+
+            <section class="tab-box">
+
+                <div class="tuijian-news-pic">
+                    <?php $c = content(53);?>
+                    <i>
+                        <a href="{:url('content/read',['id'=>$c.contentid])}">
+                            <img src="{$c.prefimg}" alt="{$c.title}">
+                            <span>{$c.tag}</span>
+                        </a>
+                    </i>
+                    <h2>
+                        <a href="{:url('content/read',['id'=>$c.contentid])}">{$c.title}</a>
+                    </h2>
+                    <p>{$c.info|strip_tags}</p>
+                    <a href="{:url('content/read',['id'=>$c.contentid])}" class="btn-blue-border">阅读详情</a>
+                </div>
+
+                <div class="tuijian-news-list">
+                    <ul>
+                        <?php $list = content_list(53,6);?>
+                        {volist name="list" id="v"}
+                        <li>
+                            <a target="_blank" href="{:url('content/read',['id'=>$v.contentid])}">
+                                <span>
+                                    <b>{$v.hits}</b>
+                                    {$v.add_time|date='Y-m'}
+                                </span>
+                                <h3>{$v.title}</h3>
+                                <p>{$v.info|strip_tags}</p>
+                            </a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                <span class="tab-a-more">
+                    <a href="{:url('content/list',['cate_id'=>53])}" title="更多博客日记">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </a>
+                </span>
+            </section>
+
+
+
+            <section class="tab-box">
+
+                <div class="tuijian-news-pic">
+                    <?php $c = content(46);?>
+                    <i>
+                        <a href="{:url('content/read',['id'=>$c.contentid])}">
+                            <img src="{$c.prefimg}" alt="{$c.title}">
+                            <span>{$c.tag}</span>
+                        </a>
+                    </i>
+                    <h2>
+                        <a href="{:url('content/read',['id'=>$c.contentid])}">{$c.title}</a>
+                    </h2>
+                    <p>{$c.info|strip_tags}</p>
+                    <a href="{:url('content/read',['id'=>$c.contentid])}" class="btn-blue-border">阅读详情</a>
+                </div>
+
+                <div class="tuijian-news-list">
+                    <ul>
+                        <?php $list = content_list(46,6);?>
+                        {volist name="list" id="v"}
+                        <li>
+                            <a target="_blank" href="{:url('content/read',['id'=>$v.contentid])}">
+                                <span>
+                                    <b>{$v.hits}</b>
+                                    {$v.add_time|date='Y-m'}
+                                </span>
+                                <h3>{$v.title}</h3>
+                                <p>{$v.info|strip_tags}</p>
+                            </a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                <span class="tab-a-more">
+                    <a href="{:url('content/list',['cate_id'=>46])}" title="更多博客日记">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </a>
+                </span>
+            </section>
+
+
+        </div>
+    </div>
+    <!-- tuijian-news end-->
+    <div class="clear blank"></div>
+    <div class="pics box whitebg tab-num02">
+        <div class="gd-box">
+            <ul id="tab">
+                <li class="tab-current">软件下载</li>
+                <!--<li>企业网站</li>-->
+
+            </ul>
+        </div>
+        <div id="tab-content">
+            <section class="tab-box">
+                <div class="pic-list-img">
+                    <ul>
+                        <?php $list = content_list(29);?>
+                        {volist name="list" id="v"}
+                        <li>
+                            <a href="{:url('content/list',['cate_id'=>10])}" target="_blank"><i>
+                                <img src="{$v.prefimg}" alt="{$v.title}">
+                                <em>{$v.tag}</em>
+                            </i>
+                                <span>{$v.title}</span>
+                            </a>
+                        </li>
+                        {/volist}
+                    </ul>
+                </div>
+                <span class="tab-a-more"><a href="{:url('content/list',['cate_id'=>29])}" title="更多"><i></i><i></i><i></i></a></span>
+            </section>
+
+
+        </div>
+    </div>
+    <!-- pics end-->
+    <div class="clear blank"></div>
+
+    <div class="news box whitebg tab-num03">
+        <div class="gd-box">
+            <ul id="tab">
+                <li class="tab-current">PHP相关教程</li>
+                <li>JS相关教程</li>
+                <li>MYSQL</li>
+
+            </ul>
+        </div>
+        <div id="tab-content">
+            <section class="tab-box">
+                <div class="news-zuixin">
+                    <ul>
+                        <?php $list = content_list(43);?>
+                        {volist name="list" id="v"}
+
+                        <li>
+                            <section>
+                                <a href="{:url('content/list',['cate_id'=>10])}" class="news-zuixin-pic">
+                                <img src="{$v.prefimg}">
+                            </a>
+                                <h2><a href="{:url('content/list',['cate_id'=>10])}">{$v.title}</a></h2>
+                                <p>{$v.info|strip_tags}</p>
+
+                                <!--<span>-->
+                                    <!--<a href='' target='_blank'>标签</a>-->
+                                <!--</span>-->
+
+                            </section>
+                        </li>
+
+                        {/volist}
+
+                    </ul>
+                </div>
+                <span class="tab-a-more">
+                    <a href="{:url('content/list',['cate_id'=>43])}" title="更多">
+                        <i></i><i></i><i></i>
+                    </a></span>
+            </section>
+
+            <section class="tab-box">
+            <div class="news-zuixin">
+                <ul>
+                    <?php $list = content_list(44);?>
+                    {volist name="list" id="v"}
+
+                    <li>
+                        <section>
+                            <a href="{:url('content/list',['cate_id'=>10])}" class="news-zuixin-pic">
+                                <img src="{$v.prefimg}">
+                            </a>
+                            <h2><a href="{:url('content/list',['cate_id'=>10])}">{$v.title}</a></h2>
+                            <p>{$v.info|strip_tags}</p>
+
+                            <!--<span>-->
+                            <!--<a href='' target='_blank'>标签</a>-->
+                            <!--</span>-->
+
+                        </section>
+                    </li>
+
+                    {/volist}
+
+                </ul>
+            </div>
+            <span class="tab-a-more">
+                    <a href="{:url('content/list',['cate_id'=>44])}" title="更多">
+                        <i></i><i></i><i></i>
+                    </a></span>
+            </section>
+
+
+            <section class="tab-box">
+                <div class="news-zuixin">
+                    <ul>
+                        <?php $list = content_list(47);?>
+                        {volist name="list" id="v"}
+
+                        <li>
+                            <section>
+                                <a href="{:url('content/list',['cate_id'=>10])}" class="news-zuixin-pic">
+                                    <img src="{$v.prefimg}">
+                                </a>
+                                <h2><a href="{:url('content/list',['cate_id'=>10])}">{$v.title}</a></h2>
+                                <p>{$v.info|strip_tags}</p>
+
+                                <!--<span>-->
+                                <!--<a href='' target='_blank'>标签</a>-->
+                                <!--</span>-->
+
+                            </section>
+                        </li>
+
+                        {/volist}
+
+                    </ul>
+                </div>
+                <span class="tab-a-more">
+                    <a href="{:url('content/list',['cate_id'=>47])}" title="更多">
+                        <i></i><i></i><i></i>
+                    </a></span>
+            </section>
+
+
+
+
+
+            <!--第一个数字11，是父栏目ID-->
+        </div>
+    </div>
+    <!-- news end-->
+
+
+    <div class="clear blank"></div>
+    <div class="videos box whitebg tab-num04">
+        <div class="gd-box">
+            <ul id="tab">
+                <li class="tab-current">视频</li>
+                <!--<li>JS教程</li>-->
+
+            </ul>
+        </div>
+        <div id="tab-content">
+            <section class="tab-box">
+                <div class="videos-list">
+                    <ul>
+                        <?php $cate = 47; $list = content_list($cate);?>
+                        {volist name="list" id="v"}
+                        <li><a href="{:url('content/read',['id'=>10])}"><i><img src="{$v.prefimg}"></i>
+                            <h2>{$v.title}</h2>
+                            <p><b class="datetime">{$v.add_time|date="Y-m"}</b><span class="viewd">{$v.hits}人在看</span></p>
+                        </a></li>
+                       {/volist}
+                    </ul>
+                </div>
+                <span class="tab-a-more"><a href="{:url('content/list',['cate_id'=>$cate])}" title="更多"><i></i><i></i><i></i></a></span>
+            </section>
+
+        </div>
+    </div>
+    <!-- videos end-->
+    <div class="blank clear"></div>
+
+    <div class="wenzi whitebg box tab-num05">
+        <div class="gd-box">
+            <ul id="tab">
+                <li class="tab-current">最新文章</li>
+
+            </ul>
+        </div>
+        <div id="tab-content">
+
+            <section class="tab-box">
+                <div class="wenzi-list">
+
+                    <?php $cate = 0; $list = content_list($cate,16);?>
+
+
+                    <ul class="wenzi-left">
+                        {volist name="list" id="v" offset="0" length="8"}
+                        <li><span>{$v.add_time|date="Y-m"}</span><a href="{:url('content/read',['id'=>$v.id])}" title="{$v.title}">{$v.title}</a></li>
+                        {/volist}
+                    </ul>
+                    <ul class="wenzi-right">
+                        {volist name="list" id="v" offset="8" length="8"}
+                        <li><span>{$v.add_time|date="Y-m"}</span><a href="{:url('content/read',['id'=>$v.id])}" title="{$v.title}">{$v.title}</a></li>
+                        {/volist}
+                    </ul>
+                </div>
+                <span class="tab-a-more"><a href="/marketing/extension/" title="更多网络推广"><i></i><i></i><i></i></a></span>
+            </section>
+
+
+        </div>
+    </div>
+    <!-- wenzi end-->
+    <div class="blank clear"></div>
+    <!--
+        <div class="ad ad-all">
+            <a href='' target=_blank>
+                <img src='__STATIC__/blue/picture/1769fa8ec1bbfb36bd084703ce0cc244.jpg' border=0 width='1170' height='140' alt=''>
+            </a>
+        </div>-->
+
+    <div class="wenzi whitebg box tab-num06">
+        <div class="gd-box">
+            <ul id="tab">
+                <li class="tab-current">软件下载</li>
+
+            </ul>
+        </div>
+        <div id="tab-content">
+            <section class="tab-box">
+                <div class="down-list">
+                    <ul>
+
+                        <li><a href="/download/html/16.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/ex01.png" ></i>
+                            <h2>腾讯QQ下载v9.1.1.24953 最新版<span>2019-05-04</span></h2>
+                            <p>提供QQ下载2018正式版官方免费下载，经多不断的更新，现在的PC端QQ已经是非常成熟的聊天软件了，新版本带来了全新的界面，集成的聊天窗口吸收了QQforMac的界面元素</p>
+                        </a><a href="/download/html/16.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+
+                        <li><a href="/download/html/90.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/ex02.png" ></i>
+                            <h2>腾讯tim(QQ简洁版) v2.3.1.20994 官方最新版<span>2019-05-04</span></h2>
+                            <p>HBuilderX是编辑器和IDE的完美结合，HBuilderX是HBuilder的下一代产品，体积小巧，启动秒开，默认包包含优秀的字处理能力，创新众多其他编辑器不具备的高效字处理模型。</p>
+                        </a><a href="/download/html/90.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+
+                        <li><a href="/download/html/91.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/77858802ef0b011a8066feb4fa6048f1.jpg" ></i>
+                            <h2>营销qq2019最新版 v2.21.2927 官方版<span>2019-05-04</span></h2>
+                            <p>HBuilderX是编辑器和IDE的完美结合，HBuilderX是HBuilder的下一代产品，体积小巧，启动秒开，默认包包含优秀的字处理能力，创新众多其他编辑器不具备的高效字处理模型。</p>
+                        </a><a href="/download/html/91.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+
+                        <li><a href="/download/html/92.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/ex03.png" ></i>
+                            <h2>Wine QQ国际版 UbuntuKylin版 官方版<span>2019-05-04</span></h2>
+                            <p>HBuilderX是编辑器和IDE的完美结合，HBuilderX是HBuilder的下一代产品，体积小巧，启动秒开，默认包包含优秀的字处理能力，创新众多其他编辑器不具备的高效字处理模型。</p>
+                        </a><a href="/download/html/92.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+
+                        <li><a href="/download/html/93.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/ex04.png" ></i>
+                            <h2>企业QQ2019电脑版 v2.0 最新版<span>2019-05-04</span></h2>
+                            <p>HBuilderX是编辑器和IDE的完美结合，HBuilderX是HBuilder的下一代产品，体积小巧，启动秒开，默认包包含优秀的字处理能力，创新众多其他编辑器不具备的高效字处理模型。</p>
+                        </a><a href="/download/html/93.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+
+                        <li><a href="/download/html/94.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/ex05.png" ></i>
+                            <h2>Smart QQ下载 2.0 官方版<span>2019-05-04</span></h2>
+                            <p>HBuilderX是编辑器和IDE的完美结合，HBuilderX是HBuilder的下一代产品，体积小巧，启动秒开，默认包包含优秀的字处理能力，创新众多其他编辑器不具备的高效字处理模型。</p>
+                        </a><a href="/download/html/94.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+
+                        <li><a href="/download/html/95.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/ex06.png" ></i>
+                            <h2>腾讯QQ下载v9.1.1.24953 最新版<span>2019-05-04</span></h2>
+                            <p>HBuilderX是编辑器和IDE的完美结合，HBuilderX是HBuilder的下一代产品，体积小巧，启动秒开，默认包包含优秀的字处理能力，创新众多其他编辑器不具备的高效字处理模型。</p>
+                        </a><a href="/download/html/95.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+
+                        <li><a href="/download/html/96.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/ex07.png" ></i>
+                            <h2>腾讯tim(QQ简洁版) v2.3.1.20994 官方最新版<span>2019-05-04</span></h2>
+                            <p>HBuilderX是编辑器和IDE的完美结合，HBuilderX是HBuilder的下一代产品，体积小巧，启动秒开，默认包包含优秀的字处理能力，创新众多其他编辑器不具备的高效字处理模型。</p>
+                        </a><a href="/download/html/96.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+
+                        <li><a href="/download/html/97.html" target="_blank" class="dl-link"><i><img src="__STATIC__/blue/picture/ex08.png" ></i>
+                            <h2>营销qq2019最新版 v2.21.2927 官方版<span>2019-05-04</span></h2>
+                            <p>HBuilderX是编辑器和IDE的完美结合，HBuilderX是HBuilder的下一代产品，体积小巧，启动秒开，默认包包含优秀的字处理能力，创新众多其他编辑器不具备的高效字处理模型。</p>
+                        </a><a href="/download/html/97.html" target="_blank" class="d-list-hover"><em>安全下载</em></a></li>
+                    </ul>
+                </div>
+                <span class="tab-a-more"><a href="/download/html/" title="更多网页制作"><i></i><i></i><i></i></a></span></section>
+        </div>
+    </div>
+    <div class="clear blank"></div>
+    <div class="whitebg box tags">
+        <div class="news-title">
+            <h2>热门标签</h2>
+            <span class="tab-a-more"><a href="javascript:;" title="更多"><i></i><i></i><i></i></a></span></div>
+        <ul>
+            {volist name="tags" id="v"}
+            <a href="{:url('index/search/index',['keyword'=>$v.name])}" target="_blank">{$v.name}({$v.hits})</a>
+            {/volist}
+        </ul>
+    </div>
+    <!-- tags end-->
+    <div class="blank clear"></div>
+    {include file="public/links" /}
+    <div class="blank clear"></div>
+</article>
+{include file="public/footer" /}
+
+
+<div class="toolbar-open"></div>
+<div class="toolbar">
+    <div class="toolbar-close"><span id="closed"></span></div>
+    <div class="toolbar-nav">
+        <ul id="toolbar-menu">
+            <li><i class="side-icon-user"></i>
+                <section>
+                    <div class="userinfo">
+                        <script src="../js/loginjs.js"></script>
+                    </div>
+                </section>
+            </li>
+            <li><i class="side-icon-qq"></i>
+                <section class="qq-section">
+                    <div class="qqinfo">
+                        <a href="https://jq.qq.com/?_wv=1027&k=56b3aa8">前端设计交流群①</a>
+                        <a href="https://jq.qq.com/?_wv=1027&k=5WE7gF5">前端设计交流群②</a>
+                        <a href="https://jq.qq.com/?_wv=1027&k=5rxnEY8">前端设计交流群②</a>
+                        <a href="http://wpa.qq.com/msgrd?v=3&uin=571031767&site=qq&menu=yes">站长QQ</a>
+                    </div>
+                </section>
+            </li>
+            <li><i class="side-icon-weixin"></i>
+                <section class="weixin-section">
+                    <div class="weixin-info">
+                        <p>个人微信扫码</p>
+                        <img src="__STATIC__/blue/picture/wx.png">            <p class="text12">工作时间</p>
+                        <p class="text12">周一至周日 9:00-21:00</p>
+                    </div>
+                </section>
+            </li>
+            <li><i class="side-icon-dashang"></i>
+                <section class="dashang-section">
+                    <p>如果你觉得本站很棒，可以通多扫码支付打赏哦！</p>
+                    <ul>
+                        <li><img src="__STATIC__/blue/picture/weipayimg.jpg">微信收款码</li>
+                        <li><img src="__STATIC__/blue/picture/alipayimg.jpg">支付宝收款码</li>
+                    </ul>
+                </section>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div class="endmenu">
+    <ul>
+        <li><a href="/"><i class="iconfont icon-shouye"></i>首页</a></li>
+        <li><a href="/phone-fenlei.html"><i class="iconfont icon-fenlei"></i>分类</a></li>
+        <li><a href="/phone-list.html"><i class="iconfont icon-navicon-wzgl"></i>所有</a></li>
+        <li><a href="/e/member/my/"><i class="iconfont icon-My"></i>我的</a></li>
+    </ul>
+</div>
+<a href="#" title="返回顶部" class="icon-top"></a>
+</body>
+</html>

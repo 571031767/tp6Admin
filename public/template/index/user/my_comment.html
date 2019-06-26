@@ -1,0 +1,74 @@
+<title>我的留言</title>
+{include file="public/bootstrap" /}
+{include file="public/header" /}
+
+<body>
+
+<div class="clear blank"></div>
+<article>
+
+    <div class="row">
+        <div class="col-md-2">
+            {include file="public/left_nav" /}
+        </div>
+        <div class="col-md-10 whitebg">
+            <div class="page-header">
+                <h1>我的留言 <small></small>
+
+                </h1>
+            </div>
+            <div class="u_content">
+                {volist name="list" id="v"}
+                <div class="media" style="margin-top: 15px;">
+                    <div class="media-left">
+                        <a href="#">
+                            {if condition="$v.prefimg"}
+                            <img class="media-object"   src="{$v.prefimg}" data-holder-rendered="true" style="max-height: 128px; max-width: 128px;">
+                            {else /}
+                            <img class="media-object"   src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNmI3N2JhZDQ5NSB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE2Yjc3YmFkNDk1Ij48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxMi41IiB5PSIzNi44Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="max-height: 128px; max-width: 128px;">
+                            {/if}
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h1 style="font-size: 20px;" class="media-heading">{$v.cont.title}</h1>
+                        <p><?=$v['content']?></p>
+                        <p style="margin-top: 15px;">
+                            <button onclick="del_comment('{$v.id}')" class="layui-btn layui-btn-xs" style="background-color: #c3c3c3">删除</button>
+                        </p>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+            <script>
+                function del_comment(id) {
+                    var url ="{:url('index/user/del_comment')}";
+                    layer.load();
+                    $.post(url,{id:id},function (e) {
+                        layer.closeAll();
+                        if(e.code == 200){
+                            success(e.msg);
+                            location.reload();
+                        }else {
+                            error(e.msg);
+                        }
+                    })
+                    return false;
+                }
+            </script>
+
+            <div class="clear blank"></div>
+
+        </div>
+    </div>
+
+
+</article>
+
+<div class="clear blank"></div>
+{include file="public/footer" /}
+
+
+<a href="#" title="返回顶部" class="icon-top"></a>
+
+</body>
+</html>

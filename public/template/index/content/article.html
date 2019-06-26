@@ -1,0 +1,177 @@
+<title>
+    {$res.title}
+</title>
+
+{include file="public/bootstrap" /}
+{include file="public/header" /}
+
+<div class="clear blank"></div>
+<article>
+    <div class="blogs left-box">
+        <div class="blogs-box whitebg">
+            <div class="news-title">
+                <h1><a href="javascript:;">{$res.title}</a></h1>
+            </div>
+            <div class="blogs-list">
+                <style>
+                    #content p{line-height: 36px}
+                    .blogs-list ul li{border-bottom: none}
+                    #editor{padding: 15px; background-color: #FFF;}
+                    #editor .w-e-text-container{height: 180px !important;}
+                </style>
+                <ul id="content">
+
+
+                        <?php echo $res['info'];?>
+
+                </ul>
+
+
+
+            </div>
+
+
+        </div>
+
+        <div class="clear blank"></div>
+        <div id="editor">
+            <div class="clear blank"></div>
+            <div id="wangeditor" >
+
+            </div>
+
+            <input type="hidden" name="contentid" value="{$content.contentid}">
+            <div class="clear blank"></div>
+
+            {if condition="session('index_user')"}
+                <button id="msg_sub" class="layui-btn layui-btn-primary fr">提交留言</button>
+            {else /}
+                <button type="button" class="layui-btn layui-btn-primary fr">请先登录</button>
+            {/if}
+
+            <div class="clear blank"></div>
+
+            <ul class="media-list" id="app">
+                <li class="media" v-for="item in comments">
+                    <div class="media-left" >
+                        <a href="javascript:;">
+                            <img class="media-object" v-if="item.user.headimgurl"  :src="item.user.headimgurl" style="width: 64px; height: 64px; border-radius: 50%">
+                            <img class="media-object" v-else src="http://micuer.com/data/upload/avatar/default_32.jpg" style="width: 64px; height: 64px; border-radius: 50%">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{item.user.nickname}}</h4>
+                        <p v-html="item.content"></p>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="clear blank"></div>
+        </div>
+
+        <div class="clear blank"></div>
+
+    </div>
+    {include file="public/aside" /}
+</article>
+
+<script>
+    layui.use('code', function(){ //加载code模块
+        layui.code({
+            elem: '.prettyprint' //默认值为.layui-code
+            ,skin: 'notepad' //如果要默认风格，不用设定该key。
+            ,about: false
+        });
+    });
+
+    var contentid = "{$content.contentid}";
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            comments:[
+            ]
+        }
+        ,mounted(){
+            this.get_comment_list();
+        }
+        ,methods: {
+            get_comment_list:function (e) {
+                var _this = this;
+                var url = "{:url('index/comment/index')}";
+                $.post(url,{contentid:contentid},function (e) {
+                    var com = _this.comments;
+                    var temp = com.concat(e.data);
+                    _this.comments = temp;
+                    console.log(temp)
+                    if(e.code == 200){
+
+                    }else {
+
+                    }
+                })
+            }
+        }
+
+    })
+</script>
+
+<!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+<script type="text/javascript" src="__STATIC__/wangEditor/wangEditor.min.js"></script>
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#wangeditor')
+    // 或者 var editor = new E( document.getElementById('editor') )
+    editor.customConfig.menus = [
+        //'head',  // 标题
+        'bold',  // 粗体
+        //'fontSize',  // 字号
+        //'fontName',  // 字体
+        //'italic',  // 斜体
+        //'underline',  // 下划线
+        //'strikeThrough',  // 删除线
+        'foreColor',  // 文字颜色
+        //'backColor',  // 背景颜色
+        'link',  // 插入链接
+        //'list',  // 列表
+        'justify',  // 对齐方式
+        //'quote',  // 引用
+        'emoticon',  // 表情
+        //'image',  // 插入图片
+        //'table',  // 表格
+        //'video',  // 插入视频
+        //'code',  // 插入代码
+        'undo',  // 撤销
+        //'redo'  // 重复
+    ]
+    editor.create();
+    document.getElementById('msg_sub').addEventListener('click', function () {
+        // 读取 html
+        //alert(editor.txt.html())
+        if(!editor.txt.text()){
+            error("提交的数据不能为空");
+            return false;
+        }
+
+        var contentid = $("input[name=contentid]").val();
+        layer.load();
+        var url = "{:url('index/comment/create')}";
+        $.post(url,{contentid:contentid,content:editor.txt.html()},function (e) {
+            layer.closeAll();
+            if(e.code == 200){
+                /*var temp = vm.comments;
+                var array = temp.concat(e.data);
+                vm.comments = array;*/
+
+                alert("评论提交成功，审核后显示");
+                editor.txt.html('');
+            }else {
+                error(e.msg);
+            }
+
+        })
+
+    }, false)
+
+</script>
+
+{include file="public/footer" /}

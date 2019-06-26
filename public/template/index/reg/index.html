@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>注册-米醋儿  米醋儿</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    {include file="public/head" /}
+    <link rel="stylesheet" type="text/css" href="__STATIC__/login/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/login/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="__STATIC__/login/css/main.css">
+</head>
+
+<body>
+
+<div class="limiter" id="starlist">
+    <div class="container-login100" style="background-image: url('__STATIC__/login/images/bg-01.jpg');">
+        <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+            <form class="login100-form validate-form layui-form"  action="" name="login_form" method="post" id="login_form">
+                <span class="login100-form-title p-b-49">用户注册</span>
+
+                <div class="wrap-input100 validate-input m-b-23" data-validate="请输入邮箱">
+                    <span class="label-input100">邮箱</span>
+                    <input class="input100" type="text" name="email" placeholder="请输入邮箱" autocomplete="off">
+                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-b-23" data-validate="请输入手机号">
+                    <span class="label-input100">手机号</span>
+                    <input class="input100" type="text" name="phone" placeholder="请输入手机号" autocomplete="off">
+                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="请输入密码">
+                    <span class="label-input100">密码</span>
+                    <input class="input100" type="password" name="password" placeholder="请输入密码">
+                    <span class="focus-input100" data-symbol="&#xf190;"></span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn" lay-submit lay-filter="formDemo" type="submit">注 册</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--<script src="__STATIC__/login/js/main.js"></script>-->
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            //layer.msg(JSON.stringify(data.field))
+            var url = "{:url('index/reg/create')}";
+            layer.load();
+            $.post(url,data.field,function (e) {
+
+                if(e.code == 200){
+                    layer.closeAll();
+                    success(e.msg);
+                    location.href = "{:url('index/index/index')}";
+                }else {
+                    layer.closeAll();
+                    error(e.msg);
+                }
+
+            })
+            return false;
+        });
+    });
+</script>
+</body>
+
+</html>

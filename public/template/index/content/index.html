@@ -1,0 +1,57 @@
+{include file="public/header" /}
+<div class="clear blank"></div>
+<article>
+    <div class="blogs left-box">
+        <div class="whitebg lanmu">
+            <img src="http://micuer.com/data/upload/advert/newspic01.jpg">
+            <h1><a href="/blog/diary/">博客日记</a></h1>
+            <p>这是我的个人博客，我的个人博客网站它不仅仅是我个人兴趣和爱好，还是我创业的起点。我爱网页设计，我爱写前端代码。它充实了我的生活，实现了我的目标和梦想。</p>
+
+        </div>
+        <div class="clear blank"></div>
+        <div class="blogs-box whitebg">
+            <div class="news-title"> <span class="hnav">
+<a href="/blog/diary/">博客日记</a><a href="/blog/life/">程序人生</a><a href="/blog/design/">设计心得</a><a href="/blog/plan/">人生规划</a></span>
+                <h2>博客日记</h2>
+            </div>
+            <div class="blogs-list">
+                <ul>
+                    {volist name="list" id="v"}
+                    <li>
+
+                        <i>
+                            <a href="{:url('index/content/read',['id'=>$v.contentid])}">
+                                {if condition="$v.prefimg"}
+                                <img src="{$v.prefimg}" alt="{$v.title}">
+                                {else /}
+                                <img src="http://micuer.com/static/layuitplall/images/article_pic.png" alt="{$v.title}">
+                                {/if}
+                            </a>
+                        </i>
+                        <h2>
+                            <em>{$v.tag}</em>
+                            <a href="{:url('index/content/read',['id'=>$v.contentid])}" target="_blank">{$v.title}</a>
+                        </h2>
+                        <p>{$v.info|strip_tags}</p>
+                        <span>
+                            {if condition="$v.tag"}
+                            <a href='' target='_blank'>{$v.tag}</a>
+                            {else /}
+                            <a href='' target='_blank'>micuer</a>
+                            {/if}
+                        </span>
+                    </li>
+                   {/volist}
+                </ul>
+            </div>
+            <div class="pagelist">
+                {$list|raw}
+            </div>
+        </div>
+    </div>
+    {include file="public/aside" /}
+</article>
+
+
+
+{include file="public/footer" /}

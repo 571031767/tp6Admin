@@ -1,0 +1,146 @@
+<title>个人中心</title>
+{include file="public/bootstrap" /}
+{include file="public/header" /}
+
+<body>
+
+
+<div class="clear blank"></div>
+<article>
+
+    <div class="row">
+        <div class="col-md-2">
+            {include file="public/left_nav" /}
+        </div>
+        <div class="col-md-10 whitebg">
+            <div class="page-header">
+                <h1>发布文章 <small></small></h1>
+            </div>
+            <div class="u_content">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标题</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">缩略图</label>
+                        <div class="layui-input-block">
+
+                            <button type="button" class="layui-btn" id="upload">
+                                <i class="layui-icon" style="display: inline-block">&#xe67c;</i>
+                                上传图片
+                            </button>
+                            <input type="hidden" name="prefimg" value="">
+                            <div class="clear blank"></div>
+                            <img id="pref_img" style="max-width: 128px; max-height: 128px;" src="__STATIC__/blue/images/default_img.png" alt="">
+                            <div class="clear blank"></div>
+                            <span>图片名不含中文</span>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">分类</label>
+                        <div class="layui-input-block">
+                            <select name="cate_id" lay-verify="required">
+                                <option value=""></option>
+                                <option value="0">北京</option>
+                                <option value="1">上海</option>
+                                <option value="2">广州</option>
+                                <option value="3">深圳</option>
+                                <option value="4">杭州</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">详情</label>
+                        <div class="layui-input-block">
+                            <style>
+                                span{display: inline-block}
+                                .layui-form-select dl{z-index: 1000}
+                            </style>
+                            {:ueditor('info')}
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="clear blank"></div>
+
+        </div>
+    </div>
+
+
+</article>
+
+<div class="clear blank"></div>
+{include file="public/footer" /}
+
+
+<a href="#" title="返回顶部" class="icon-top"></a>
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+        var url ="{:url('index/article/create')}";
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.load();
+            $.post(url,data.field,function (e) {
+                layer.closeAll();
+                if(e.code == 200){
+                    success(1);
+                }else {
+                    error(2)
+                }
+            })
+            return false;
+        });
+    });
+
+    //图片上传
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: "{:url('admin/upload/upload')}" //上传接口
+            ,accept:"images"
+            ,before: function(res){
+                //上传完毕回调
+                layer.load();
+            }
+            ,done: function(res){
+                layer.closeAll();
+                //上传完毕回调
+                if(res.code == 200){
+                    $("input[name=prefimg]").val(res.data);
+                    $("#pref_img").attr("src",res.data);
+                    success(res.msg);
+                }else {
+                    error(e.msg);
+                }
+
+            }
+            ,error: function(){
+                //请求异常回调
+                layer.closeAll();
+                error(e.msg);
+            }
+        });
+    });
+</script>
+</body>
+</html>

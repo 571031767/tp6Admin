@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>博客日记_ 博客日记 </title>
+<meta name="keywords" content="个人博客,博客日记,个人日记" />
+<meta name="description" content="这是我的个人博客，我的个人博客网站它不仅仅是我个人兴趣和爱好，还是我创业的起点。我爱网页设计，我爱写前端代码。它充实了我的生活，实现了我的目标和梦想。" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="../css/base.css" rel="stylesheet">
+<link href="../css/m.css" rel="stylesheet">
+<script src="../js/jquery-1.8.3.min.js" ></script>
+<script src="../js/hc-sticky.js"></script>
+<script src="../js/aside-sticky.js"></script>
+<script src="../js/main.js"></script>
+<!--[if lt IE 9]>
+<script src="../js/modernizr.js"></script>
+<![endif]-->
+</head>
+<body>
+<header>
+  <div class="logo-section box">
+    <div class="search">
+      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+        <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="logo"><a href="/"><img src="../picture/logo.png">      <h2 class="logo-title">青于蓝</h2>
+      <p class="logo-text">排名技术建站，让你对手追赶</p>
+      </a> </div>
+  </div>
+  <div class="clear"></div>
+  <div class="topnav">
+         <h2><a href="/">青于蓝</a></h2>
+    <nav>
+      <ul id="starlist">
+        <li><a href="/">网站首页</a></li>
+    <li class="menu"><a href="/blog/" >个人博客</a>
+  <ul class="sub">  
+      <li><a href="/blog/diary/" >博客日记</a></li>
+<li><a href="/blog/life/" >程序人生</a></li>
+<li><a href="/blog/design/" >设计心得</a></li>
+<li><a href="/blog/plan/" >人生规划</a></li>
+    </ul><span></span></li>
+      <li class="menu"><a href="/case/" >设计案例</a>
+  <ul class="sub">  
+      <li><a href="/case/personal/" >个人网站</a></li>
+<li><a href="/case/enterprise/" >企业网站</a></li>
+<li><a href="/case/unit/" >事业单位</a></li>
+<li><a href="/case/shop/" >网购商城</a></li>
+    </ul><span></span></li>
+      <li class="menu"><a href="/seo/" >SEO优化</a>
+  <ul class="sub">  
+      <li><a href="/seo/baidu/" >百度SEO</a></li>
+<li><a href="/seo/shuyu/" >SEO专业术语</a></li>
+<li><a href="/seo/problem/" >SEO常见问题</a></li>
+    </ul><span></span></li>
+      <li class="menu"><a href="/course/" >视频教程</a>
+  <ul class="sub">  
+      <li><a href="/course/web/" >前端设计</a></li>
+<li><a href="/course/js/" >JS教程</a></li>
+<li><a href="/course/cms/" >CMS教程</a></li>
+    </ul><span></span></li>
+      <li class="menu"><a href="/marketing/" >网络营销</a>
+  <ul class="sub">  
+      <li><a href="/marketing/extension/" >网络推广</a></li>
+<li><a href="/marketing/brand/" >品牌营销</a></li>
+<li><a href="/marketing/consciousness/" >意识思维</a></li>
+    </ul><span></span></li>
+      <li class="menu"><a href="/download/" >资源下载</a>
+  <ul class="sub">  
+      <li><a href="/download/html/" >网页制作</a></li>
+<li><a href="/download/ftp/" >FTP工具</a></li>
+<li><a href="/download/soft/" >编程软件</a></li>
+<li><a href="/download/jQuery/" >jQuery插件</a></li>
+    </ul><span></span></li>
+    <li><a href="/shop/">模板商城</a></li>
+  <li><a href="/about.html">关于我们</a></li>
+
+
+
+      </ul>
+    </nav>
+    <h2 id="mnavh"><span class="navicon"></span></h2>
+  </div>
+  <div class="is-search">
+    <section><i></i>请输入关键字词</section>
+  </div>
+  <div class="search-page">
+    <div class="go-left"></div>
+    <div class="search">
+      <form action="/e/search/index.php" method="post" name="searchform" id="searchform">
+        <input name="keyboard" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+        <input name="show" value="title" type="hidden">
+        <input name="tempid" value="1" type="hidden">
+        <input name="tbname" value="news" type="hidden">
+        <input name="Submit" class="input_submit" value="搜索" type="submit">
+      </form>
+    </div>
+    <div class="clear"></div>
+    <div class="hot-search">
+      <p>热门搜索排行</p>
+      <ul class="search-paihang">
+<li><a href="/e/search/result/?searchid=2"><i>1</i>个人博客</a></li>
+<li><a href="/e/search/result/?searchid=1"><i>2</i>日记</a></li>
+<li><a href="/e/search/result/?searchid=3"><i>3</i>博客</a></li>
+<li><a href="/e/search/result/?searchid=4"><i>4</i>企业网站</a></li>
+ 
+      </ul>
+    </div>
+    <div class="new-search">
+      <p>最新搜索排行</p>
+      <ul class="search-paihang">
+<li><a href="/e/search/result/?searchid=4"><i>1</i>企业网站</a></li>
+<li><a href="/e/search/result/?searchid=3"><i>2</i>博客</a></li>
+<li><a href="/e/search/result/?searchid=2"><i>3</i>个人博客</a></li>
+<li><a href="/e/search/result/?searchid=1"><i>4</i>日记</a></li>
+ 
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="clear blank"></div>
+<article>
+  <div class="blogs left-box">
+   <div class="whitebg lanmu"> 
+<img src="../picture/75bb5aff96674eaad46bd72d96f825d5.jpg">
+      <h1><a href="/blog/diary/">博客日记</a></h1>
+        <p>这是我的个人博客，我的个人博客网站它不仅仅是我个人兴趣和爱好，还是我创业的起点。我爱网页设计，我爱写前端代码。它充实了我的生活，实现了我的目标和梦想。</p>   
+
+    </div>
+    <div class="clear blank"></div>
+    <div class="blogs-box whitebg">
+      <div class="news-title"> <span class="hnav">
+<a href="/blog/diary/">博客日记</a><a href="/blog/life/">程序人生</a><a href="/blog/design/">设计心得</a><a href="/blog/plan/">人生规划</a></span>
+        <h2>博客日记</h2>
+      </div>
+      <div class="blogs-list">      
+        <ul>
+
+          <li> 
+          
+           <i><a href="/blog/diary/2.html"><img src="../picture/newspic01.jpg" alt="【告别2018】耕耘才有所得，付出才有收获"></a></i>         
+         <h2><em>顶</em><a href="/blog/diary/2.html" target="_blank">【告别2018】耕耘才有所得，付出才有收获</a></h2>  
+            <p>网站模板我更新速度是很慢的，数了一下，大概12个模板，不多，但是每一套个人博客网站模板都是我精心设计的，期间认识了很多做优化的朋友还有客户，根据他们的要求还有建议，我又做了很多调整，无论是静态模板的编写还是后台调用方式上，都有很大的进步，我这一年的时间，比我7年加起来的收获还要多。</p>
+            <span><a href='/e/tags/?tagname=付出&tempid=8' target='_blank'>付出</a> <a href='/e/tags/?tagname=收获&tempid=8' target='_blank'>收获</a> </span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/27.php"><img src="../picture/cc7b5674b352be04124698a86316656f.jpg" alt="只属于雨天才有的心情"></a></i>         
+         <h2><a href="/blog/diary/27.php" target="_blank">只属于雨天才有的心情</a></h2>  
+            <p>我爱雨天，但是也许是害怕雨天的忧郁，所以我愿天一直是晴朗的，不要给我怀念与想像的条件。这样的雨天，会为我点燃一支烛，给我些许暖意吗？我愿意静静地，守着这丝温暖，静静地看着雨不停</p>
+            <span><a href='/e/tags/?tagname=雨天&tempid=8' target='_blank'>雨天</a> <a href='/e/tags/?tagname=心情&tempid=8' target='_blank'>心情</a> </span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/26.html"><img src="../picture/75bb5aff96674eaad46bd72d96f825d5.jpg" alt="12月的随想-你认为你是一个俗女吗"></a></i>         
+         <h2><a href="/blog/diary/26.html" target="_blank">12月的随想-你认为你是一个俗女吗</a></h2>  
+            <p>我问朋友：&ldquo;你认为你是一个俗女吗？&rdquo;朋友说：&ldquo;我是个世俗的女人，俗，俗得很，俗不可耐，可我自己喜欢。当这个社会所有的女人都被称为美女的时候，淑女上等，俗女中等，你可</p>
+            <span></span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/25.html"><img src="../picture/fa5be2be9f796f5d0841bdb798304ca6.jpg" alt="毕业后的那段时间"></a></i>         
+         <h2><a href="/blog/diary/25.html" target="_blank">毕业后的那段时间</a></h2>  
+            <p>我又在恍恍惚惚的过日子了，没有刚开始毕业那会儿的雄心勃勃，没有那会儿找工作那点志气，随着时间的消失，我一天一天的就这样沉沦下去？买的公务员书，我居然抱着三分的热情看，这次面临</p>
+            <span><a href='/e/tags/?tagname=毕业&tempid=8' target='_blank'>毕业</a> </span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/24.html"><img src="../picture/0d307392f3d6412883440fa2f4f21595.jpg" alt="QQ在线——生活日记"></a></i>         
+         <h2><a href="/blog/diary/24.html" target="_blank">QQ在线——生活日记</a></h2>  
+            <p>打招呼的方式很多，也许一个“握手”，一朵“玫瑰”，一个“微笑”，就可以拉开话题，我最接受不了的是“你叫什么名字啊？”“你家在哪里啊?”“你在读书还是上班啊？”“你有没有男朋友啊？”....这些盘问式的对话，也许这次我给你说了，我们毕竟是在网络，你能记住吗？遇到同样一个网友再三问你同样的话题，包括姓名的时候，你是否也烦呢？ ­</p>
+            <span><a href='/e/tags/?tagname=生活日记&tempid=8' target='_blank'>生活日记</a> </span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/23.html"><img src="../picture/fc32c52ab39695cf363576b424a1a1ac.jpg" alt="遇见一个未知的你"></a></i>         
+         <h2><a href="/blog/diary/23.html" target="_blank">遇见一个未知的你</a></h2>  
+            <p>听着那熟悉的歌曲 &amp;shy;看着那一张张可爱的图片 &amp;shy;读着我们共同欣赏的诗&amp;hellip;&amp;hellip; &amp;shy;也许我们曾经相遇 &amp;shy; &amp;shy;看着你远去的背影 &amp;shy;沿着你来的方向 &amp;sh</p>
+            <span><a href='/e/tags/?tagname=遇见&tempid=8' target='_blank'>遇见</a> </span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/22.html"><img src="../picture/82ad18fca433c2a102319063a17cfc8f.jpg" alt="最后的午餐"></a></i>         
+         <h2><a href="/blog/diary/22.html" target="_blank">最后的午餐</a></h2>  
+            <p>昨晚上做梦了，我本不想记下，可是又怕这种似乎有点真实的感觉就这样溜走，枕头湿了...我也记不得我是在梦中哭过还是...... &amp;shy;在一个小餐馆，男孩叫了一份鱼香茄子、麻婆豆腐,还</p>
+            <span></span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/21.html"><img src="../picture/89b36652d1f5ba23172c7ed3dc522d8b.jpg" alt="Just One Last Dance"></a></i>         
+         <h2><a href="/blog/diary/21.html" target="_blank">Just One Last Dance</a></h2>  
+            <p>《Just One Last Dance 》是一个朋友介绍给我听的，当时一听就喜欢上它了，直到现在，就像《因为是女子》一样，我空间的主打歌还挺多的，唯独这两首让我舍不得换掉......如果你听到这</p>
+            <span></span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/20.html"><img src="../picture/4c92de8f1a83a421f19126ecf5c1b70b.jpg" alt="爱情的背叛者"></a></i>         
+         <h2><a href="/blog/diary/20.html" target="_blank">爱情的背叛者</a></h2>  
+            <p>我宁愿自己是爱情的背叛者，那我就不用守候那个不真实的承诺！也不用为那个没有结果的爱情落泪！甚至是为了挽留而付出代价！ 为了爱情，放弃亲情、放弃友情，甚至是抛弃一切的，我只能说，</p>
+            <span><a href='/e/tags/?tagname=爱情&tempid=8' target='_blank'>爱情</a> </span>
+          </li>
+          <li> 
+          
+           <i><a href="/blog/diary/15.html"><img src="../picture/f6eaadcc0021432af65f2bd0eec7ae86.jpg" alt="思源夜景"></a></i>         
+         <h2><a href="/blog/diary/15.html" target="_blank">思源夜景</a></h2>  
+            <p>上学期间，去得最多的也就是思源广场，旁边还有图书馆，茶苑。周末约着三两个同学拍照，下午又逛街，一天时间就这样打打闹闹就度过了.<br />
+</p>
+            <span><a href='/e/tags/?tagname=思源夜景&tempid=8' target='_blank'>思源夜景</a> </span>
+          </li>
+        </ul>
+      </div>
+      <div class="pagelist"></div>
+    </div>
+  </div>
+  <aside class="side-section right-box">
+
+    <div class="whitebg tuijian">
+      <h2 class="side-title">站长推荐</h2>
+      <section class="topnews imgscale"><a href="/blog/diary/2.html"><img src="../picture/newspic01.jpg"><span>【告别2018】耕耘才有所得，付出才有收获</span></a></section>
+      <ul>
+        <li><a href="/blog/diary/25.html" title="毕业后的那段时间" target="_blank"><i><img src="../picture/fa5be2be9f796f5d0841bdb798304ca6.jpg"></i>
+          <p>毕业后的那段时间</p>
+          </a></li>
+        <li><a href="/blog/diary/24.html" title="QQ在线——生活日记" target="_blank"><i><img src="../picture/0d307392f3d6412883440fa2f4f21595.jpg"></i>
+          <p>QQ在线——生活日记</p>
+          </a></li>
+        <li><a href="/blog/diary/23.html" title="遇见一个未知的你" target="_blank"><i><img src="../picture/fc32c52ab39695cf363576b424a1a1ac.jpg"></i>
+          <p>遇见一个未知的你</p>
+          </a></li>
+        <li><a href="/blog/diary/22.html" title="最后的午餐" target="_blank"><i><img src="../picture/82ad18fca433c2a102319063a17cfc8f.jpg"></i>
+          <p>最后的午餐</p>
+          </a></li>
+        <li><a href="/blog/diary/21.html" title="Just One Last Dance" target="_blank"><i><img src="../picture/89b36652d1f5ba23172c7ed3dc522d8b.jpg"></i>
+          <p>Just One Last Dance</p>
+          </a></li>
+        <li><a href="/blog/diary/15.html" title="思源夜景" target="_blank"><i><img src="../picture/f6eaadcc0021432af65f2bd0eec7ae86.jpg"></i>
+          <p>思源夜景</p>
+          </a></li>
+      </ul>
+    </div>
+    <div class="blank clear" ></div>
+    <div class="whitebg paihang">
+      <h2 class="side-title">点击排行</h2>
+      <section class="topnews imgscale"><a href="/blog/diary/2.html"><img src="../picture/newspic01.jpg"><span>【告别2018】耕耘才有所得，付出才有收获</span></a></section>
+      <ul>
+        <li><i></i><a href="/blog/diary/2.html" title="【告别2018】耕耘才有所得，付出才有收获" target="_blank">【告别2018】耕耘才有所得，付出才有收获</a></li>
+        <li><i></i><a href="/blog/diary/22.html" title="最后的午餐" target="_blank">最后的午餐</a></li>
+        <li><i></i><a href="/blog/diary/25.html" title="毕业后的那段时间" target="_blank">毕业后的那段时间</a></li>
+        <li><i></i><a href="/blog/diary/26.html" title="12月的随想-你认为你是一个俗女吗" target="_blank">12月的随想-你认为你是一个俗女吗</a></li>
+        <li><i></i><a href="/blog/diary/27.php" title="只属于雨天才有的心情" target="_blank">只属于雨天才有的心情</a></li>
+        <li><i></i><a href="/blog/diary/24.html" title="QQ在线——生活日记" target="_blank">QQ在线——生活日记</a></li>
+        <li><i></i><a href="/blog/diary/23.html" title="遇见一个未知的你" target="_blank">遇见一个未知的你</a></li>
+        <li><i></i><a href="/blog/diary/21.html" title="Just One Last Dance" target="_blank">Just One Last Dance</a></li>
+      </ul>
+    </div>
+    <div class="blank clear" ></div>
+    <div class="whitebg cloud">
+      <h2 class="side-title">标签云</h2>
+      <ul>
+     <a href="/e/tags/?tagid=60&tempid=8" target="_blank">网易博客(1)</a> <a href="/e/tags/?tagid=1&tempid=8" target="_blank">2(1)</a> <a href="/e/tags/?tagid=20&tempid=8" target="_blank">程序员(7)</a> <a href="/e/tags/?tagid=5&tempid=8" target="_blank">看娃三年(1)</a> <a href="/e/tags/?tagid=56&tempid=8" target="_blank">建设(1)</a> <a href="/e/tags/?tagid=27&tempid=8" target="_blank">女程序员(3)</a> <a href="/e/tags/?tagid=19&tempid=8" target="_blank">心情(1)</a> <a href="/e/tags/?tagid=44&tempid=8" target="_blank">设计原则(1)</a> <a href="/e/tags/?tagid=9&tempid=8" target="_blank">收获(1)</a> <a href="/e/tags/?tagid=58&tempid=8" target="_blank">如何定位(1)</a> <a href="/e/tags/?tagid=29&tempid=8" target="_blank">赛跑(1)</a> <a href="/e/tags/?tagid=61&tempid=8" target="_blank">帝国cms(1)</a> <a href="/e/tags/?tagid=31&tempid=8" target="_blank">如何发展(1)</a> <a href="/e/tags/?tagid=10&tempid=8" target="_blank">个人博客(5)</a> <a href="/e/tags/?tagid=53&tempid=8" target="_blank">企业建站(1)</a> <a href="/e/tags/?tagid=55&tempid=8" target="_blank">企业网站模板(1)</a> <a href="/e/tags/?tagid=42&tempid=8" target="_blank">搜索排名(1)</a> <a href="/e/tags/?tagid=38&tempid=8" target="_blank">网站制作(1)</a> <a href="/e/tags/?tagid=37&tempid=8" target="_blank">建站(1)</a> <a href="/e/tags/?tagid=41&tempid=8" target="_blank">排名技术建站(1)</a>      </ul>
+    </div>
+    <div class="ad ad-small"><a href='https://promotion.aliyun.com/ntms/act/qwbk.html?userCode=l1qstn8f' target=_blank><img src='../picture/c58f3150b86b1cad751bff3e094b09fc.jpg' border=0 width='320' height='140' alt=''></a></div>
+    <div class="whitebg suiji">
+      <h2 class="side-title">猜你喜欢</h2>
+      <ul>
+                        <li><a target="_blank"  href="/blog/diary/20.html">爱情的背叛者</a></li>
+                        <li><a target="_blank"  href="/blog/diary/24.html">QQ在线——生活日记</a></li>
+                        <li><a target="_blank"  href="/blog/diary/27.php">只属于雨天才有的心情</a></li>
+                        <li><a target="_blank"  href="/blog/diary/21.html">Just One Last Dance</a></li>
+                        <li><a target="_blank"  href="/blog/diary/22.html">最后的午餐</a></li>
+                        <li><a target="_blank"  href="/blog/diary/2.html">【告别2018】耕耘才有所得，付出才有收获</a></li>
+                        <li><a target="_blank"  href="/blog/diary/25.html">毕业后的那段时间</a></li>
+                        <li><a target="_blank"  href="/blog/diary/15.html">思源夜景</a></li>
+                        <li><a target="_blank"  href="/blog/diary/26.html">12月的随想-你认为你是一个俗女吗</a></li>
+                        <li><a target="_blank"  href="/blog/diary/23.html">遇见一个未知的你</a></li>
+                  </ul>
+    </div>
+  </aside>
+</article>
+<div class="clear blank"></div>
+<footer>
+  <div class="footer box">
+    <div class="wxbox">
+      <ul>
+        <li><img src="../picture/wxgzh.jpg"><span>微信公众号</span></li>
+        <li><img src="../picture/wx.png"><span>我的微信</span></li>
+      </ul>
+    </div>
+    <div class="endnav">
+      <p><b>站点声明：</b></p>
+      <p>1、本站个人博客模板，均为杨青青本人设计，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+      <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：<a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=HHh9cn95b3F1cHVye1xtbTJ-c3E" target="_blank">dacesmiling@qq.com</a></p>
+      <p>Copyright © <a href="https://www.yangqq.com" target="_blank">www.yangqq.com</a> All Rights Reserved. 备案号：<a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">蜀ICP备11002373号-1</a> <a href="/sitemap.xml" target="_blank">网站地图</a></p>
+    </div>
+  </div>
+</footer>
+<div class="toolbar-open"></div>
+<div class="toolbar">
+  <div class="toolbar-close"><span id="closed"></span></div>
+  <div class="toolbar-nav">
+    <ul id="toolbar-menu">
+      <li><i class="side-icon-user"></i>
+        <section>
+          <div class="userinfo">
+              <script src="../js/loginjs.js"></script>
+          </div>
+        </section>
+      </li>
+      <li><i class="side-icon-qq"></i>
+        <section class="qq-section">
+          <div class="qqinfo"><a href="https://jq.qq.com/?_wv=1027&k=5EH6xZg">前端设计交流群①</a><a href="https://jq.qq.com/?_wv=1027&k=52fM36y">前端设计交流群②</a><a href="http://wpa.qq.com/msgrd?v=3&uin=476847113&site=qq&menu=yes">站长QQ</a></div>
+        </section>
+      </li>
+      <li><i class="side-icon-weixin"></i>
+        <section class="weixin-section">
+          <div class="weixin-info">
+            <p>个人微信扫码</p>
+<img src="../picture/wx.png">            <p class="text12">工作时间</p>
+            <p class="text12">周一至周日 9:00-21:00</p>
+          </div>
+        </section>
+      </li>
+      <li><i class="side-icon-dashang"></i>
+        <section class="dashang-section">
+          <p>如果你觉得本站很棒，可以通过扫码支付打赏哦！</p>
+          <ul>
+            <li><img src="../picture/weipayimg.jpg">微信收款码</li>
+            <li><img src="../picture/alipayimg.jpg">支付宝收款码</li>
+          </ul>
+        </section>
+      </li>
+    
+    </ul>
+  </div>
+</div>
+<div class="endmenu">
+<ul>
+<li><a href="/"><i class="iconfont icon-shouye"></i>首页</a></li>
+<li><a href="/phone-fenlei.html"><i class="iconfont icon-fenlei"></i>分类</a></li>
+<li><a href="/phone-list.html"><i class="iconfont icon-navicon-wzgl"></i>所有</a></li>
+<li><a href="/e/member/my/"><i class="iconfont icon-My"></i>我的</a></li>
+</ul>
+</div>
+<a href="#" title="返回顶部" class="icon-top"></a>
+</body>
+</html>

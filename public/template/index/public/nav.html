@@ -1,0 +1,103 @@
+<header>
+    <div class="logo-section box">
+        <div class="search">
+            <form action="{:url('index/search/index')}" method="get" name="searchform" id="searchform">
+                <input name="keyword" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+                <input class="input_submit" value="搜索" type="submit">
+            </form>
+        </div>
+        <div class="logo">
+            <a href="{:url('index/index/index')}"><img src="__STATIC__/blue/picture/logo.png">      <h2 class="logo-title">{:cache("site_name")}</h2>
+                <p class="logo-text">提供视频教程，快手教程，建站及开发服务。</p>
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="topnav">
+        <h2><a href="/">{:cache("site_name")}</a></h2>
+        <nav>
+            <ul id="starlist">
+                <li id="selected"><a href="{:url('index/index')}">网站首页</a></li>
+                {volist name="cate" id="v"}
+                <li {if condition="$v.child"}class="menu"{/if}><a href="{$v.link}" >{$v.name}</a>
+                    {if condition="$v.child"}
+                    <ul class="sub">
+                        {volist name="$v.child" id="c"}
+                        <li><a href="{$c.link}" >{$c.name}</a></li>
+                        {/volist}
+                    </ul>
+                    {/if}
+                    <span></span>
+                </li>
+                {/volist}
+                {if condition="session('index_user')"}
+                <li class="fr menu"><a href="{:url('index/User/index')}">个人中心</a>
+                    <ul class="sub">
+
+                        <li><a href="{:url('index/user/index')}" >个人中心</a></li>
+                        <li><a href="{:url('admin/index/index')}" >管理后台</a></li>
+                        <li><a href="{:url('index/logout/index')}" >退出登录</a></li>
+
+                    </ul>
+                </li>
+                {else /}
+                <li class="fr"><a href="{:url('index/login/index')}">登录</a></li>
+                <li class="fr"><a href="{:url('index/reg/index')}">注册</a></li>
+                {/if}
+
+            </ul>
+        </nav>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+    </div>
+    <div class="is-search">
+        <section><i></i>请输入关键字词</section>
+    </div>
+    <div class="search-page">
+        <div class="go-left"></div>
+        <div class="search">
+            <form action="{:url('index/search/index')}" method="get" name="searchform" id="searchform">
+                <input name="keyword" id="keyboard" class="input_text" value="请输入关键字词" style="color: rgb(153, 153, 153);" onfocus="if(value=='请输入关键字词'){this.style.color='#000';value=''}" onblur="if(value==''){this.style.color='#999';value='请输入关键字词'}" type="text">
+                <input class="input_submit" value="搜索" type="submit">
+            </form>
+        </div>
+        <div class="clear"></div>
+        <div class="hot-search">
+            <p>热门搜索排行</p>
+            <ul class="search-paihang">
+
+                <li><a href="{:url('index/search/index',['keyword'=>'米醋儿'])}"><i>1</i>米醋儿</a></li>
+                <li><a href="{:url('index/search/index',['keyword'=>'tp6'])}"><i>1</i>tp6</a></li>
+
+
+            </ul>
+        </div>
+        <div class="new-search">
+            <p>最新搜索排行</p>
+            <ul class="search-paihang">
+                <li><a href="/e/search/result/?searchid=20"><i>1</i>ds</a></li>
+                <li><a href="/e/search/result/?searchid=19"><i>2</i>网</a></li>
+                <li><a href="/e/search/result/?searchid=18"><i>3</i>帝国cms</a></li>
+                <li><a href="/e/search/result/?searchid=17"><i>4</i>宝宝</a></li>
+                <li><a href="/e/search/result/?searchid=16"><i>5</i>模板</a></li>
+                <li><a href="/e/search/result/?searchid=15"><i>6</i>建设</a></li>
+                <li><a href="/e/search/result/?searchid=14"><i>7</i>杨青</a></li>
+                <li><a href="/e/search/result/?searchid=13"><i>8</i>个人</a></li>
+                <li><a href="/e/search/result/?searchid=12"><i>9</i>设计师</a></li>
+                <li><a href="/e/search/result/?searchid=11"><i>10</i>评论</a></li>
+                <li><a href="/e/search/result/?searchid=10"><i>11</i>耕耘</a></li>
+                <li><a href="/e/search/result/?searchid=9"><i>12</i>今夕何夕</a></li>
+                <li><a href="/e/search/result/?searchid=8"><i>13</i>十条</a></li>
+                <li><a href="/e/search/result/?searchid=7"><i>14</i>二</a></li>
+                <li><a href="/e/search/result/?searchid=6"><i>15</i>帝国</a></li>
+                <li><a href="/e/search/result/?searchid=5"><i>16</i>come</a></li>
+                <li><a href="/e/search/result/?searchid=4"><i>17</i>企业网站</a></li>
+                <li><a href="/e/search/result/?searchid=3"><i>18</i>博客</a></li>
+                <li><a href="/e/search/result/?searchid=2"><i>19</i>个人博客</a></li>
+                <li><a href="/e/search/result/?searchid=1"><i>20</i>日记</a></li>
+
+            </ul>
+        </div>
+    </div>
+</header>
+
+
