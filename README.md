@@ -6,7 +6,7 @@ ThinkPHP 6.0
 
 ## 支持
 
-[米醋儿网](https://www.micuer.com)
+[米醋儿网](http://www.micuer.com)
 
 ## 主要新特性
 
