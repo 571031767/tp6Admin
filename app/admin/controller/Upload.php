@@ -8,29 +8,27 @@
 namespace app\admin\controller;
 
 
+/**
+ * Class Upload
+ * @package app\admin\controller
+ * upload 再6.0的文档未更新之前的上传
+ *
+ * 文档更新后已将此功能更新至最新框架支持
+ */
 
 
 
 
 
 
-
-
-
-use think\facade\Filesystem;
 
 class Upload
 {
 
     public function upload()
     {
+        //由于 tp 6的上传目前错在问题，故暂由此方法代替上传  后续更新升级 20190620
 
-        // 获取表单上传文件 例如上传了001.jpg
-        $file = request()->file('file');
-        // 上传到本地服务器
-
-        $savename = Filesystem::putFile( 'topic', $file);
-        die;
         //图片文件不能以中文名
 
         $path = __DIR__."/../../../public/uploads/".date("Ymd")."/";
@@ -51,6 +49,10 @@ class Upload
             }
             else
             {
+//                echo "Upload: " . $_FILES["file"]["name"] . "<br />";
+//                echo "Type: " . $_FILES["file"]["type"] . "<br />";
+//                echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+//                echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
                 if(!is_dir($path)){
                     mkdir($path,"0777");
                 }

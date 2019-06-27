@@ -21,6 +21,8 @@
                 <div class="card-body">
 
                     <form  action="#!" method="post"  class="row layui-form">
+                        <input type="hidden" name="contentid" value="{$content.id}">
+                        <input type="hidden" name="articleid" value="{$article.id}">
                         <div class="form-group col-md-12">
                             <label for="type">栏目</label>
                             <div class="form-controls">
@@ -28,7 +30,7 @@
                                     <option value="0">请选择</option>
                                     {volist name="cate" id="v"}
                                     {$t = $v.level*15}
-                                    <option value="{$v.id}">
+                                    <option value="{$v.id}" {if condition="$content.cate_id eq $v.id"}selected{/if}>
                                         <?php for($k=0;$k<$v['level'];$k++){ if($k==0){echo "";}elseif($k==1){ echo "|_"; }else{ echo "_";} }?>
                                         {$v.name}
                                     </option>
@@ -38,25 +40,25 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label for="title">标题</label>
-                            <input type="text" class="form-control" id="title" name="title" value="" placeholder="请输入标题" />
+                            <input type="text"  class="form-control" id="title" name="title" value="{$content.title}" placeholder="请输入标题" />
                         </div>
                         <div class="form-group col-md-3">
                             <label for="seo_keywords">作者</label>
-                            <input type="text" class="form-control" id="seo_keywords" name="author" value="" placeholder="关键词" />
+                            <input type="text" class="form-control" id="seo_keywords" name="author" value="{$content.author}" placeholder="作者" />
                         </div>
 
                         <div class="form-group col-md-3">
                             <label>点击量</label>
-                            <input type="text" class="form-control"  name="hits" value="<?php echo rand(566,1080);?>" placeholder="" />
+                            <input type="text" class="form-control"  name="hits" value="{$content.hits}" placeholder="" />
                         </div>
 
                         <div class="form-group col-md-3">
                             <label for="tags">标签</label>
-                            <input class="js-tags-input form-control" type="text" id="tags" name="tags" value="" />
+                            <input class="js-tags-input form-control" type="text" id="tags" name="tags" value="{$content.tags}" />
                         </div>
                         <div class="form-group col-md-3">
                             <label for="sort">排序</label>
-                            <input type="text" class="form-control" id="sort" name="sort" value="255" />
+                            <input type="text" class="form-control" id="sort" name="sort" value="{$content.sort}" />
                         </div>
 
 
@@ -66,53 +68,28 @@
                                 <i class="layui-icon" style="display: inline-block">&#xe67c;</i>
                                 上传图片
                             </button>
-                            <input type="hidden" name="prefimg" value="">
+                            <input type="hidden" name="prefimg" value="{$content.prefimg}">
                             <div class="clear blank"></div>
+                            {if condition="$content.prefimg"}
+                            <img id="pref_img" style="max-width: 128px; max-height: 128px;" src="{$content.prefimg}" alt="">
+                            {else /}
                             <img id="pref_img" style="max-width: 128px; max-height: 128px;" src="__STATIC__/blue/images/default_img.png" alt="">
+                            {/if}
                             <div class="clear blank"></div>
                             <span>图片名不含中文</span>
-                           <!-- <div class="form-controls">
-
-                                <ul class="list-inline clearfix lyear-uploads-pic">
-                                    <li class="col-xs-4 col-sm-3 col-md-2">
-                                        <figure>
-                                            <img src="__STATIC__/admin/images//gallery/15.jpg" alt="图片一">
-                                            <figcaption>
-                                                <a class="btn btn-round btn-square btn-primary" href="#!"><i class="mdi mdi-eye"></i></a>
-                                                <a class="btn btn-round btn-square btn-danger" href="#!"><i class="mdi mdi-delete"></i></a>
-                                            </figcaption>
-                                        </figure>
-                                    </li>
-                                    <li class="col-xs-4 col-sm-3 col-md-2">
-                                        <figure>
-                                            <img src="__STATIC__/admin/images//gallery/16.jpg" alt="图片二">
-                                            <figcaption>
-                                                <a class="btn btn-round btn-square btn-primary" href="#!"><i class="mdi mdi-eye"></i></a>
-                                                <a class="btn btn-round btn-square btn-danger" href="#!"><i class="mdi mdi-delete"></i></a>
-                                            </figcaption>
-                                        </figure>
-                                    </li>
-                                    <li class="col-xs-4 col-sm-3 col-md-2">
-                                        <figure>
-                                            <img src="__STATIC__/admin/images//gallery/17.jpg" alt="图片三">
-                                            <figcaption>
-                                                <a class="btn btn-round btn-square btn-primary" href="#!"><i class="mdi mdi-eye"></i></a>
-                                                <a class="btn btn-round btn-square btn-danger" href="#!"><i class="mdi mdi-delete"></i></a>
-                                            </figcaption>
-                                        </figure>
-                                    </li>
-                                    <li class="col-xs-4 col-sm-3 col-md-2">
-                                        <a class="pic-add" id="add-pic-btn" href="#!" title="点击上传"></a>
-                                    </li>
-                                </ul>
-                            </div>-->
 
                         </div>
+
                         <div class="form-group col-md-12">
-                            <label for="content">内容</label>
+                            <label for="tongyongdaima">通用代码 <span>系统会默认优先使用通用代码播放</span> </label>
+                            <textarea class="form-control" id="tongyongdaima" name="tongyongdaima" rows="5" value="" placeholder="通用代码">{$article.tongyongdaima}</textarea>
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label>内容</label>
                             <p>
 
-                                {:ueditor('info')}
+                                {:ueditor('info','95%','600',$article.info)}
 
                             </p>
                         </div>
@@ -138,7 +115,7 @@
     //Demo
     layui.use('form', function(){
         var form = layui.form;
-        var url ="{:url('create')}";
+        var url ="{:url('update')}";
         //监听提交
         form.on('submit(formDemo)', function(data){
             layer.load();

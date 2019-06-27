@@ -111,9 +111,7 @@ function unlimitforlevel($cate,$html="___", $pid=0,$level=0){
     foreach($cate as $v){
         if($v['pid'] == $pid){
             $v['level']=$level + 1;
-
             $v['html'] =str_repeat($html,$level);
-
             $arr[] = $v;
             $arr = array_merge($arr,unlimitforlevel($cate , $html ,$v['id'] , $level+1));
         }

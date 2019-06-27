@@ -62,8 +62,9 @@
                                 <th>#</th>
                                 <th>缩略图</th>
                                 <th>标题</th>
-                                <th>真实点击</th>
-                                <th>点击</th>
+                                <th>评论内容</th>
+                                <th>用户</th>
+                                <th>头像</th>
                                 <th>创建日期</th>
                                 <th>修改日期</th>
                                 <th>
@@ -86,15 +87,18 @@
                             <tr>
                                 <td>{$v.id}</td>
                                 <td>
-                                    {if condition="$v.prefimg"}
-                                    <img style="max-width: 100px" src="{$v.prefimg}" alt="">
+                                    {if condition="$v.cont.prefimg"}
+                                    <img style="max-width: 100px" src="{$v.cont.prefimg}" alt="">
                                     {else /}
                                     无
                                     {/if}
                                 </td>
-                                <td>{$v.title}</td>
-                                <td>{$v.rel_hits}</td>
-                                <td>{$v.hits}</td>
+                                <td>{$v.cont.title}</td>
+                                <td>{$v.content|strip_tags}</td>
+                                <td>{$v.user.nickname}</td>
+                                <td>
+                                    <img style="max-width: 50px; border-radius: 50%" src="{$v.user.headimgurl}" alt="">
+                                </td>
 
 
                                 <td>{$v.create_time}</td>
@@ -115,17 +119,7 @@
                                 <td>
                                     <div class="btn-group">
                                         <button class="btn btn-default" onclick="del_article({$v.id})" title="删除"><i class="mdi mdi-delete"></i></button>
-                                        <a href="{:url('edit',['id'=>$v.id])}" class="btn btn-default" title="修改"><i class="mdi mdi-marker"></i></a>
-                                        <div class="btn-group">
-                                            <button id="btnGroupDrop1" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                导出 <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="#!"><i class="mdi mdi-zip-box"></i> Zip</a></li>
-                                                <li><a href="#!"><i class="mdi mdi-file-pdf"></i> PDF</a></li>
-                                                <li><a href="#!"><i class="mdi mdi-file-excel"></i> Excel</a></li>
-                                            </ul>
-                                        </div>
+                                        <button class="btn btn-default" onclick="pass_comment({$v.id})" title="通过审核"><i class="mdi mdi-textbox-password"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -159,6 +153,7 @@
                 layer.closeAll();
                 if(e.code == 200){
                     success(e.msg);
+                    location.reload();
                 }else {
                     error(e.msg)
                 }
@@ -167,6 +162,22 @@
         }, function(){
             layer.msg('已取消');
         });
+    }
+
+    function pass_comment(id) {
+        var url ="{:url('pass_comment')}";
+        //监听提交
+        layer.load();
+        $.post(url,{id:id},function (e) {
+            layer.closeAll();
+            if(e.code == 200){
+                success(e.msg);
+                location.reload();
+            }else {
+                error(e.msg)
+            }
+        })
+        return false;
     }
 </script>
 </body>

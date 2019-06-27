@@ -32,7 +32,7 @@ class Index extends BaseController
 
         //头条调取1条
         $headline = Content::where("status",1)
-            ->where("tag","=","头条")
+            ->where("tags","=","头条")
             ->order("id DESC")
             ->limit(1)
             ->find();
