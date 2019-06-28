@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    {include file="public/css" /}
+</head>
+
+<body>
+<div class="container-fluid p-t-15">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>{$title}</h4>
+                </div>
+
+
+
+                <div class="card-body">
+                    <div class="search_panl">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
+                            搜索
+                        </button>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="exampleModalLabel">搜索</h4>
+                                    </div>
+                                    <form action="{:url('index')}" method="get">
+                                    <div class="modal-body">
+
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="control-label">[精确匹配]id：</label>
+                                                <input type="text" name="id" class="form-control" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="control-label">[模糊匹配(优先级最高)]标题：</label>
+                                                <input type="text" name="title" class="form-control" id="recipient-name">
+                                            </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                        <button type="submit"  class="btn btn-primary">搜索</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>组名</th>
+                                <th>描述</th>
+                                <th>排序</th>
+
+                                <th>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-xs btn-pink dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            状态 <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="{:url('index')}">全部</a></li>
+                                            <li><a href="{:url('index',['status'=>2])}">待审</a></li>
+                                            <li><a href="{:url('index',['status'=>1])}">正常</a></li>
+                                        </ul>
+                                    </div>
+                                </th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {volist name="list" id="v"}
+                            <tr>
+                                <td>{$v.id}</td>
+                                <td>
+                                    {if condition="$v.prefimg"}
+                                    <img style="max-width: 100px" src="{$v.prefimg}" alt="">
+                                    {else /}
+                                    无
+                                    {/if}
+                                </td>
+                                <td>{$v.title}</td>
+                                <td>{$v.rel_hits}</td>
+                                <td>{$v.hits}</td>
+
+
+                                <td>{$v.create_time}</td>
+                                <td>{$v.update_time}</td>
+                                <td>
+                                    {switch $v.cont.status}
+                                    {case 1}
+                                        <span class="label label-success">正常</span>
+                                    {/case}
+                                        {case 2}
+                                        <span class="label label-warning">待审</span>
+                                        {/case}
+                                    {default /}
+                                        <span class="label label-danger">默认</span>
+                                    {/switch}
+
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button class="btn btn-default" onclick="del_article({$v.id})" title="删除"><i class="mdi mdi-delete"></i></button>
+                                        <a href="{:url('edit',['id'=>$v.id])}" class="btn btn-default" title="修改"><i class="mdi mdi-marker"></i></a>
+                                        <div class="btn-group">
+                                            <button id="btnGroupDrop1" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                导出 <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#!"><i class="mdi mdi-zip-box"></i> Zip</a></li>
+                                                <li><a href="#!"><i class="mdi mdi-file-pdf"></i> PDF</a></li>
+                                                <li><a href="#!"><i class="mdi mdi-file-excel"></i> Excel</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                        {$list|raw}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{include file="public/js" /}
+<script>
+    layui.use('layer', function(){
+        var layer = layui.layer;
+    });
+    function del_article(id) {
+        layer.confirm('您确定要删除吗？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            var url ="{:url('delete')}";
+            //监听提交
+            layer.load();
+            $.post(url,{id:id},function (e) {
+                layer.closeAll();
+                if(e.code == 200){
+                    success(e.msg);
+                }else {
+                    error(e.msg)
+                }
+            })
+            return false;
+        }, function(){
+            layer.msg('已取消');
+        });
+    }
+</script>
+</body>
+</html>

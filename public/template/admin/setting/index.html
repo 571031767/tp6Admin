@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    {include file="public/css" /}
+</head>
+
+<body>
+
+
+<div class="container-fluid p-t-15">
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>{$title}</h4>
+                </div>
+                <div class="card-body">
+
+                    <form  action="#!" method="post"  class="row layui-form">
+                        <div class="form-group col-md-12">
+                            <label for="title">站点名称</label>
+                            <input type="text" class="form-control" id="title" name="title" value="" placeholder="请输入标题" />
+                        </div>
+
+                        <div class="form-group col-md-12">
+                            <label for="url">站点链接</label>
+                            <input type="text" class="form-control" id="url" name="url" value="" placeholder="请输入标题" />
+                        </div>
+
+
+
+                        <div class="form-group col-md-12">
+                            <label></label>
+                            <button type="button" class="layui-btn" id="upload">
+                                <i class="layui-icon" style="display: inline-block">&#xe67c;</i>
+                                站点logo
+                            </button>
+                            <input type="hidden" name="prefimg" value="">
+                            <div class="clear blank"></div>
+                            <img id="pref_img" style="max-width: 128px; max-height: 128px;" src="__STATIC__/blue/images/default_img.png" alt="">
+                            <div class="clear blank"></div>
+                            <span>图片名不含中文</span>
+                        </div>
+
+                        
+                        <div class="form-group col-md-12">
+                            <button type="submit" lay-submit lay-filter="formDemo" class="btn btn-primary ajax-post" target-form="add-form">确 定</button>
+                            <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);return false;">返 回</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+{include file="public/js" /}
+
+<script>
+    //Demo
+    layui.use('form', function(){
+        var form = layui.form;
+        var url ="{:url('create')}";
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.load();
+            $.post(url,data.field,function (e) {
+                layer.closeAll();
+                if(e.code == 200){
+                    success(e.msg);
+                }else {
+                    error(e.msg)
+                }
+            })
+            return false;
+        });
+    });
+
+    //图片上传
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#upload' //绑定元素
+            ,url: "{:url('admin/upload/upload')}" //上传接口
+            ,accept:"__STATIC__/admin/images/"
+            ,before: function(res){
+                //上传完毕回调
+                layer.load();
+            }
+            ,done: function(res){
+                layer.closeAll();
+                //上传完毕回调
+                if(res.code == 200){
+                    $("input[name=prefimg]").val(res.data);
+                    $("#pref_img").attr("src",res.data);
+                    success(res.msg);
+                }else {
+                    error(e.msg);
+                }
+
+            }
+            ,error: function(){
+                //请求异常回调
+                layer.closeAll();
+                error(e.msg);
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
