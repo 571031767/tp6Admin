@@ -464,9 +464,11 @@ if (typeof jQuery === "undefined") {
             if ($navTabLi.hasClass("active")) {
                 var $nextLi = $navTabLi.next("li:first"),
                     $prevLi = $navTabLi.prev("li:last");
-                if ($nextLi.size()) {
+                //if ($nextLi.size()) {
+                if ($nextLi.length) {
                     self.active($nextLi);
-                } else if ($prevLi.size()) {
+                //} else if ($prevLi.size()) {
+                } else if ($prevLi.length) {
                     self.active($prevLi);
                 }
             }
@@ -667,6 +669,77 @@ if (typeof jQuery === "undefined") {
                     });
                 });
             }
+            
+            // 右键菜单
+            handler($el.nav, 'contextmenu', '.mt-nav-tab', function (event) {
+                event.preventDefault();
+                var menu    = $('<ul class="dropdown-menu" role="menu" id="contextify-menu"/>'),
+                    $this   = $(this),
+                    $nav    = $this.closest('li'),
+                    $navTab = self._getNavTab($nav);
+                
+                var menuData = [
+                  {text: '刷新', onclick: function(){
+                      var $tabPane = self._getTabPane($navTab);
+                      
+                      $tabPane.attr('src', $tabPane.attr('src'));
+                      menu.hide();
+                      
+                      return false;
+                  }}
+                ];
+                
+                var param = self._getParam($navTab);
+                if (param.type !== 'main') {
+                    menuData.push(
+                        {text: '关闭', onclick: function(){
+                            self.close($navTab);
+                            menu.hide();
+                            return false;
+                        }}
+                    );
+                }
+                
+                var l = menuData.length, i;
+                
+                for (i = 0; i < l; i++) {
+                    var item = menuData[i],
+                        el   = $('<li/>');
+                    
+                    el.append('<a/>');
+                    
+                    var a = el.find('a');
+                    
+                    a.on('click', item.onclick);
+                    a.css('cursor', 'pointer');
+                    a.html(item.text);
+                    
+                    menu.append(el);
+                }
+                
+                var currentMenu = $("#contextify-menu");
+                if (currentMenu.length > 0) {
+                    if(currentMenu !== menu) {
+                        currentMenu.replaceWith(menu);
+                    }
+                } else {
+                    $('body').append(menu);
+                }
+
+                var clientTop = $(window).scrollTop() + event.clientY,
+                    x = (menu.width() + event.clientX < $(window).width()) ? event.clientX : event.clientX - menu.width(),
+                    y = (menu.height() + event.clientY < $(window).height()) ? clientTop : clientTop - menu.height();
+
+                menu.css('top', y).css('left', x).css('position', 'fixed').show();
+              
+                
+                $(this).parents().on('mouseup', function () {
+                    menu.hide();
+                });
+                $('#iframe-content').find('iframe').contents().find('body').on('mouseup', function () {
+                    menu.hide();
+                });
+            });
 
             //close tab
             handler($el.nav, 'click', '.mt-close-tab', function () {

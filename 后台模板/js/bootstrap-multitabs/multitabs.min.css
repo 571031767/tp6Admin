@@ -40,10 +40,11 @@ li:hover .mt-close-tab {
 }
 .mt-nav-bar a {
     cursor: pointer !important;
+    line-height: 1.95!important;
 }
 @media (max-width: 767px){
     .mt-tab-content{
-        padding-top: 0 !important;
+        /*padding-top: 0 !important;*/
     }
 }
 .mt-tab-content{
@@ -69,8 +70,11 @@ li:hover .mt-close-tab {
 }
 .mt-dropdown .caret {
     position: absolute;
-    top: 18px;
+    top: 22px;
 }
 .mt-dropdown .dropdown-menu {
     margin-top: 0px;
+}
+#contextify-menu {
+    min-width: 80px!important;
 }

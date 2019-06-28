@@ -8,7 +8,7 @@
         </section>
         <ul>
 
-            <?php $cate = 0; $list = content_list($cate,12,"rel_hits DESC","tag = '推荐'");?>
+            <?php $cate = 0; $list = content_list($cate,12,"rel_hits DESC","tags = '推荐'");?>
             {volist name="list" id="v"}
             <li>
                 <a href="{:url('index/content/read',['id'=>$v.contentid])}" target="_blank" title="{$v.title}">

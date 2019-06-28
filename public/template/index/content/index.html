@@ -29,13 +29,13 @@
                             </a>
                         </i>
                         <h2>
-                            <em>{$v.tag}</em>
+                            <em>{$v.tags}</em>
                             <a href="{:url('index/content/read',['id'=>$v.contentid])}" target="_blank">{$v.title}</a>
                         </h2>
                         <p>{$v.info|strip_tags}</p>
                         <span>
-                            {if condition="$v.tag"}
-                            <a href='' target='_blank'>{$v.tag}</a>
+                            {if condition="$v.tags"}
+                            <a href='' target='_blank'>{$v.tags}</a>
                             {else /}
                             <a href='' target='_blank'>micuer</a>
                             {/if}
